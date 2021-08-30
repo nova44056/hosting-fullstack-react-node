@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import { createConnection } from "typeorm";
 import dotenv from "dotenv";
 import ormconfig from "./ormconfig";
+import path from "path";
 
 (() => {
   const app = express();
@@ -13,6 +14,13 @@ import ormconfig from "./ormconfig";
   createConnection(ormconfig).then(() => {
     console.log("Database is initialized");
   });
+  if (process.env.NODE_ENV === "production") {
+    app.use(express.static("web/build"));
+    app.get("*", (_req, res) => {
+      res.sendFile(path.resolve(__dirname, "web", "build", "index.html"));
+    });
+  }
+
   const PORT = process.env.PORT || 8000;
   app.listen(PORT, () => {
     console.log("Server is running");
