@@ -1,6 +1,6 @@
 import { ConnectionOptions } from "typeorm";
 
-export default {
+export const ormconfig: ConnectionOptions = {
   type: "postgres",
   host: "ec2-18-209-153-180.compute-1.amazonaws.com",
   port: 5432,
@@ -18,4 +18,4 @@ export default {
     migrationsDir: "src/migration",
     subscribersDir: "src/subscriber",
   },
-} as ConnectionOptions;
+};

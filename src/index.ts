@@ -3,7 +3,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import { createConnection } from "typeorm";
 import dotenv from "dotenv";
-import ormconfig from "./ormconfig";
+import { ormconfig } from "./ormconfig";
 import path from "path";
 
 (() => {
