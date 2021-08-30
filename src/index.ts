@@ -3,7 +3,6 @@ import express from "express";
 import bodyParser from "body-parser";
 import { createConnection } from "typeorm";
 import dotenv from "dotenv";
-import { ormconfig } from "./ormconfig";
 import path from "path";
 
 (() => {
@@ -11,7 +10,7 @@ import path from "path";
   dotenv.config();
   app.use(express.json());
   app.use(bodyParser.urlencoded({ extended: true }));
-  createConnection(ormconfig).then(() => {
+  createConnection().then(() => {
     console.log("Database is initialized");
   });
   if (process.env.NODE_ENV === "production") {
