@@ -10,6 +10,7 @@ import path from "path";
   dotenv.config();
   app.use(express.json());
   app.use(bodyParser.urlencoded({ extended: true }));
+  console.log(process.env);
   createConnection().then(() => {
     console.log("Database is initialized");
   });
