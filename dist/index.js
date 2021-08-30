@@ -18,7 +18,6 @@ const routes_1 = require("./routes");
         console.log("Database is initialized");
     });
     if (process.env.NODE_ENV === "production") {
-        console.log("--- Production ---");
         app.use(express_1.default.static("web/build"));
         app.get("*", (_req, res) => {
             res.sendFile(path_1.default.resolve(__dirname, "web", "build", "index.html"));
