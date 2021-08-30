@@ -9,11 +9,12 @@ import path from "path";
   const app = express();
   dotenv.config();
   app.use(express.json());
+  console.log(process.env.APP_NAME);
   app.use(bodyParser.urlencoded({ extended: true }));
-  console.log(process.env.NODE_ENV);
   createConnection().then(() => {
     console.log("Database is initialized");
   });
+
   if (process.env.NODE_ENV === "production") {
     console.log("--- Production ---");
     app.use(express.static("web/build"));
