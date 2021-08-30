@@ -12,18 +12,17 @@ const routes_1 = require("./routes");
 (() => {
     const app = express_1.default();
     app.use(express_1.default.json());
-    console.log(process.env.APP_NAME);
     app.use(body_parser_1.default.urlencoded({ extended: true }));
     typeorm_1.createConnection().then(() => {
         console.log("Database is initialized");
     });
+    app.use("/api/v1", routes_1.apiRoutes);
     if (process.env.NODE_ENV === "production") {
         app.use(express_1.default.static("web/build"));
         app.get("*", (_req, res) => {
-            res.sendFile(path_1.default.resolve(__dirname, "web", "build", "index.html"));
+            return res.sendFile(path_1.default.resolve(__dirname, "web", "build", "index.html"));
         });
     }
-    app.use("/api/v1", routes_1.apiRoutes);
     const PORT = process.env.PORT || 8000;
     app.listen(PORT, () => {
         console.log("Server is running");
