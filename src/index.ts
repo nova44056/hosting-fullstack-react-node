@@ -20,6 +20,11 @@ import path from "path";
       res.sendFile(path.resolve(__dirname, "web", "build", "index.html"));
     });
   }
+  app.get("/api/v1", (_req, res) => {
+    res.status(200).json({
+      env: process.env,
+    });
+  });
   const PORT = process.env.PORT || 8000;
   app.listen(PORT, () => {
     console.log("Server is running");
