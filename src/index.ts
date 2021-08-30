@@ -2,12 +2,10 @@ import "reflect-metadata";
 import express from "express";
 import bodyParser from "body-parser";
 import { createConnection } from "typeorm";
-import dotenv from "dotenv";
 import path from "path";
 
 (() => {
   const app = express();
-  dotenv.config();
   app.use(express.json());
   console.log(process.env.APP_NAME);
   app.use(bodyParser.urlencoded({ extended: true }));
