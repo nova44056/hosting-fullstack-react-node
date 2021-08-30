@@ -13,14 +13,13 @@ import { apiRoutes } from "./routes";
   createConnection().then(() => {
     console.log("Database is initialized");
   });
-
+  app.use("/api/v1", apiRoutes);
   if (process.env.NODE_ENV === "production") {
     app.use(express.static("web/build"));
     app.get("*", (_req, res) => {
       res.sendFile(path.resolve(__dirname, "web", "build", "index.html"));
     });
   }
-  app.use("/api/v1", apiRoutes);
   const PORT = process.env.PORT || 8000;
   app.listen(PORT, () => {
     console.log("Server is running");
