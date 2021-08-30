@@ -1,0 +1,21 @@
+import { ConnectionOptions } from "typeorm";
+
+export default {
+  type: "postgres",
+  host: "ec2-18-209-153-180.compute-1.amazonaws.com",
+  port: 5432,
+  url: "postgres://diuvuncidharkc:fd3754cebf4ec9fdf182b5021c22c4fc8f4abaaa287098e8a3b7704bf41198bf@ec2-18-209-153-180.compute-1.amazonaws.com:5432/d5sepe9vurk397",
+  username: "diuvuncidharkc",
+  password: "fd3754cebf4ec9fdf182b5021c22c4fc8f4abaaa287098e8a3b7704bf41198bf",
+  database: "d5sepe9vurk397",
+  synchronize: true,
+  logging: false,
+  entities: ["dist/entity/**/*.ts"],
+  migrations: ["dist/migration/**/*.ts"],
+  subscribers: ["dist/subscriber/**/*.ts"],
+  cli: {
+    entitiesDir: "src/entity",
+    migrationsDir: "src/migration",
+    subscribersDir: "src/subscriber",
+  },
+} as ConnectionOptions;
